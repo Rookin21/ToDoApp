@@ -9,7 +9,7 @@ namespace ToDoApp
     /// </summary>
     public partial class MainWindow : Window
     {
-        private BindingList<ToDoModel> _ToDoData; // Контейнер для хранения данных
+        private BindingList<ToDoModel> _ToDoList; // Контейнер для хранения данных
 
         public MainWindow()
         {
@@ -18,13 +18,24 @@ namespace ToDoApp
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            _ToDoData = new BindingList<ToDoModel>()
+            _ToDoList = new BindingList<ToDoModel>()
             {
                 new ToDoModel() { Text = "test" },
                 new ToDoModel() { Text = "test2" }
             };
 
-            dgToDoList.ItemsSource = _ToDoData;
+            dgToDoList.ItemsSource = _ToDoList;
+            _ToDoList.ListChanged += _ToDoList_ListChanged; // При изменении списка - вызывается метод
+        }
+
+        private void _ToDoList_ListChanged(object? sender, ListChangedEventArgs e)
+        {
+            if(e.ListChangedType == ListChangedType.ItemAdded || 
+                e.ListChangedType == ListChangedType.ItemDeleted || 
+                e.ListChangedType == ListChangedType.ItemChanged)
+            {
+
+            }
         }
     }
 }
