@@ -4,7 +4,7 @@ namespace ToDoApp.Models
 {
     public class ToDoModel
     {
-        public DateTime _CreationDate = DateTime.Now;
+        public DateTime CreationDate { get; set; } = DateTime.Now;
 
         private bool _IsDone;
         private string _Text;
