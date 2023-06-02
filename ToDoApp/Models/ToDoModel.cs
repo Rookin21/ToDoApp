@@ -11,7 +11,7 @@ namespace ToDoApp.Models
     public class ToDoModel : INotifyPropertyChanged
     {
         private bool _IsDone;
-        private string? _Text;
+        private string _Text;
 
         [JsonProperty(PropertyName = "creationDate")]
         public DateTime CreationDate { get; set; } = DateTime.Now;
